@@ -23,7 +23,7 @@ this_table <- coconut[1,] %>% select(FullWeight,
 
 #-----------------------------------------------------------------------------------------------
 ui <- fluidPage(
-  titlePanel("App to predict the weight of coconut flesh given the properties of the coconut"),
+  titlePanel("App to predict the weight of coconut flesh given the dimensions of the coconut"),
   sidebarPanel(
     numericInput("FullWeight", "Full Weight", 550, min = 150, max = 1000),
     numericInput("Hcircumference", "Horizontal Circumference (cm)", 31, min = 25, max = 50),
