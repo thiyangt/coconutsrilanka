@@ -25,12 +25,12 @@ this_table <- coconut[1,] %>% select(FullWeight,
 ui <- fluidPage(
   titlePanel("App to predict the weight of coconut flesh given the dimensions of the coconut"),
   sidebarPanel(
-    numericInput("FullWeight", "Full Weight", 550, min = 150, max = 1000),
+    numericInput("FullWeight", "Full Weight (g)", 550, min = 150, max = 1000),
     numericInput("Hcircumference", "Horizontal Circumference (cm)", 31, min = 25, max = 50),
     numericInput("Vcircumference", "Vertical Circumference (cm)", 42, min = 25, max = 50),
     numericInput("VCircumferencewithHusk", "Vertical Circumference with Husk (cm)", 28, min = 28, max = 40),
-    pickerInput('Palapi', 'Choose (0 - No, 1 - Yes):', choices =c(0, 1)),
-    pickerInput('Kalati', "Choose (0 - No, 1 - Yes):", choices = c(0, 1)),
+    pickerInput('Palapi', 'Choose Palapi or not (0 - No, 1 - Yes):', choices =c(0, 1)),
+    pickerInput('Kalati', "Choose Kalati or not (0 - No, 1 - Yes):", choices = c(0, 1)),
 
     
     actionButton("add_btn", "Add"),
@@ -81,7 +81,7 @@ output$shiny_table <- renderDT({
   
 predict_df <- eventReactive(input$predict_btn, {
   
-  train <- get_data()
+  train <- coconut
 
   
   Model <-  lm(coconut_flesh ~ FullWeight +
